@@ -1,0 +1,28 @@
+.footer {
+  background-color: black;
+  text-align: center;
+  color: #fff;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4.6rem;
+  .footer__logo {
+    text-align: center;
+    .footer__logo-enlace {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      .footer__logo-enlace-texto {
+        margin: 0;
+      }
+      .footer__logo-enlace-imagen {
+        width: 4rem;
+        height: 4rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+body {
+  background-image: linear-gradient(to top, #f3f3f3 0%, #fff 100%);
+  //Posiciona el footer al final de la pagina
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+    #content-wrap {
+      padding-bottom: 4.6rem; //Alto de footer
+      .contenedor {
+        margin: auto;
+        max-width: 80%;
+      }
+      .sombra {
+        padding: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        background-color: rgba(240, 240, 240, 0.4);
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+        -moz-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+        box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+      }
+      @media (max-width: 468px) {
+        .contenedor {
+          margin: auto;
+          max-width: 100%;
+        }
+        .sombra {
+          margin-top: 0;
+        }
+      }
+
+      .carousel-item img {
+        max-width: 100%;
+        min-height: 100px;
+        height: auto;
+      }
+      main {
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, 280px);
+          justify-content: center;
+          row-gap: 1rem;
+          column-gap: 1rem;
+          margin: 1rem;
+        }
+      }
+      .nosotros {
+        h2 {
+          padding-top: 1rem;
+        }
+        p {
+          line-height: 25px;
+          padding: 1rem;
+          font-size: 1;
+        }
+      }
+    }
+  }
+}

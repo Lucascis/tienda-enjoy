@@ -1,0 +1,34 @@
+@import "mixins";
+
+.navbar {
+  background-color: var(--bg-nav-color);
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  .navbar-nav {
+    a {
+      color: #fff;
+      font-size: 1.4rem;
+      @include black_hover;
+    }
+    li {
+      .dropdown-menu {
+        @extend .navbar;
+        & a:hover {
+          @extend .dropdown-menu;
+        }
+      }
+    }
+    .nav-item {
+      margin: 0 10px 0 10px;
+    }
+  }
+  .navbar-light .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.7);
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:active,
+  .navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}

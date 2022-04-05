@@ -1,0 +1,32 @@
+.page404{
+    background-image: url(../assets/broken_joystick.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    h1 {
+        padding: 2rem;
+        text-align: center;
+        font-size: 4rem;
+    }
+    .text404 {
+        position: absolute;
+        height: 150px;
+        width: 200px;
+        left: 55%;
+        top: 70%;
+        text-align: center;
+        h2 {
+            color: #fff;
+            font-size: 4vh;
+        }
+        p {
+            color: #fff;
+        }
+        a{
+            color: #de0909;
+            font-size: 1.5rem;
+        }
+    }
+}

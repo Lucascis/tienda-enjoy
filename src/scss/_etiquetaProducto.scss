@@ -1,0 +1,39 @@
+//Etiqueta de producto
+.productCard {
+  width: 280px;
+  margin: 0.2rem;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  .productCard__enlace {
+    text-decoration: none;
+    color: black;
+    .productCard__enlace-imagen {
+      width: 100%;
+      height: 18rem;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+  .productCard__info {
+    border-top: 0.1px solid #fff;
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 0.1rem;
+    text-align: center;
+    line-height: 25px;
+    .productCard__info-productPrice {
+      font-size: 1.4rem;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+    }
+  }
+  &:hover {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+    transition: all 0.5s;
+  }
+}

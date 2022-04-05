@@ -1,0 +1,6 @@
+@mixin black_hover {
+  &:hover,
+  &:focus {
+    color: #000;
+  }
+}
