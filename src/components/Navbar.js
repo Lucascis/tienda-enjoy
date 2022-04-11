@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import '../scss/_navbar.scss';
+import { Link } from "react-router-dom";
 import CartWidget from './CartWidget';
 
 const Navbar = () => {
 
     return (
-        <nav className="navbar sticky-top navbar-expand-md">
-            <div className="container-fluid">
+        <nav className="navbar sticky-top navbar-expand-md position-relative">
+            <div className="container-fluid ">
                 <div className="navbar-light">
                     <button
                         className="navbar-toggler"
@@ -20,11 +20,13 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div className="collapse navbar-collapse position-relative" id="navbarNavDropdown">
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav mx-auto">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/index.html">Inicio</a>
-                        </li>
+                        <Link to="/" className="nav-item nav-link">
+                            <li >
+                                Inicio
+                            </li>
+                        </Link>
                         <li className="nav-item dropdown">
                             <a
                                 className="nav-link dropdown-toggle"
@@ -40,37 +42,37 @@ const Navbar = () => {
                                 className="dropdown-menu"
                                 aria-labelledby="navbarDropdownMenuLink"
                             >
-                                <li>
-                                    <a
-                                        className="dropdown-item"
-                                        href="/categorias/auriculares.html"
-                                    >Auriculares</a
-                                    >
-                                </li>
-                                <li>
-                                    <a className="dropdown-item" href="/categorias/mouse.html"
-                                    >Mouse</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        className="dropdown-item"
-                                        href="/categorias/teclados.html"
-                                    >Teclados</a
-                                    >
-                                </li>
+                                <Link to="/categoria/1" className="dropdown-item">
+                                    <li>
+                                        Auriculares
+                                    </li>
+                                </Link>
+                                <Link to="/categoria/2" className="dropdown-item">
+                                    <li>
+                                        Mouse
+                                    </li>
+                                </Link>
+                                <Link to="/categoria/3" className="dropdown-item">
+                                    <li>
+                                        Teclados
+                                    </li>
+                                </Link>
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/nosotros.html">Nosotros</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/contacto.html">Contacto</a>
-                        </li>
+                        <Link to="/" className="nav-item nav-link">
+                            <li>
+                                Nosotros
+                            </li>
+                        </Link>
+                        <Link to="/" className="nav-item nav-link">
+                            <li>
+                                Contacto
+                            </li>
+                        </Link>
                     </ul>
-                    <CartWidget/>
                 </div>
             </div>
+            <CartWidget />
         </nav>
     );
 }

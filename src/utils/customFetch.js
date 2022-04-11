@@ -6,7 +6,7 @@ const customFetch = (time, task) => {
             if (is_ok) {
                 resolve(task);
             } else {
-                reject("Error in the customFetch :(");
+                reject("Error in customFetch");
             }
         }, time);
     });

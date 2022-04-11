@@ -1,0 +1,101 @@
+// Presentacion de producto de forma individual
+.oneProductCard {
+  border-radius: 10px;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  span{
+    display: block;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .itemCounts {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 auto 1rem;
+
+    button {
+        margin: 0 0.2rem;
+        svg{
+          margin: 0;
+        }
+    }
+    p {
+        font-size: 1.2rem;
+        padding: 0.2rem;
+    }
+}
+  .oneProductCard__imagen {
+    min-width: 300px;
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+  }
+  .oneProductCard__info * {
+    margin: 1rem 0;
+  }
+  .oneProductCard__info {
+    margin: 0 auto;
+    text-align: center;
+    h2 {
+      padding-top: 1rem;
+      font-size: 1.2em;
+      color: black;
+    }
+    h3 {
+      color: rgb(255, 0, 0);
+    }
+    .oneProductCard__info-buyButton {
+      background: var(--bg-nav-color);
+      padding: 10px;
+      width: 120px;
+      border: 0;
+      border-radius: 10px;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background: rgb(167, 0, 0);
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    .oneProductCard__info-video {
+      .oneProductCard__info-video-iframe {
+        width: 90%;
+        height: 180px;
+        margin: 0;
+        border-radius: 10px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    display: block;
+    .oneProductCard__imagen {
+      display: block;
+      margin: auto;
+    }
+    .oneProductCard__info * {
+      margin: 0.5rem 0;
+    }
+    .oneProductCard__imagen {
+      min-width: 100px;
+      width: 50%;
+      height: 50%;
+      border-radius: 10px;
+    }
+  }
+}
+.oneProductCard__description {
+  margin-top: 0.5rem;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  *:not(:first-child) {
+    margin-top: 1rem;
+  }
+}

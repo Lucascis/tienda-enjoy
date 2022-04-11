@@ -1,15 +1,12 @@
-import ItemCounts from "./ItemCounts";
+import { Link } from 'react-router-dom';
 
-const Item = ({ name, stock, price, img }) => {
+const Item = ({ id, name, price, img }) => {
     return (
         <div className="productCard">
-            <a
-                className="productCard__enlace"
-                href="/categorias/teclados/alloy_fps_pro.html"
-            >
+            <Link to={`/item/${id}`} className="productCard__enlace">
                 <img
                     className="productCard__enlace-imagen"
-                    src={require(`../assets/productos/${img}.webp`)}
+                    src={require(`../assets/productos/${img}`)}
                     alt={name}
                 />
                 <div className="productCard__info">
@@ -19,14 +16,8 @@ const Item = ({ name, stock, price, img }) => {
                     <span className="productCard__info-productPrice">
                         ${price}
                     </span>
-                    <span>
-                        Stock: {stock}
-                    </span>
                 </div>
-
-            </a>
-
-            <ItemCounts stock={stock} initial={1} />
+            </Link>
         </div>
     );
 }

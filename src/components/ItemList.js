@@ -4,13 +4,13 @@ const ItemList = ({ items }) => {
     return (
         <>
             <h2>Productos</h2>
-            <section className="grid">
+            <div className="grid">
                 {
                     items.length > 0
-                        ? items.map(item => <Item key={item.id} name={item.name} price={item.price} img={item.img} stock={item.stock} />)
+                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} img={item.img} stock={item.stock} />)
                         : <p>Cargando...</p>
                 }
-            </section>
+            </div>
         </>
     );
 }
