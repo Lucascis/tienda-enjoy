@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import ItemCount from './ItemCounts';
+import { useContext, useState } from 'react';
+import ItemCount from './ItemCount';
+import Checkout from '../utils/Checkout';
+import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
+    const itemCart = useContext(CartContext);
 
     const onAdd = (qty) => {
-        console.log(`Seleccionaste ${qty} items.`);
         setItemCount(qty);
+        itemCart.addItem(item, qty);
     }
 
     return (
@@ -26,17 +28,19 @@ const ItemDetail = ({ item }) => {
                                 <h2>{item.name}</h2>
                                 <h3>${item.price}</h3>
                                 {
-                                itemCount === 0
-                                    ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
-                                    : <p>Checkout(proximamente.)</p>
+                                    itemCount === 0
+                                    ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                                    : <Checkout/>
                                 }
+                                
+                                
                                 <span>
                                     Stock: {item.stock}
                                 </span>
                                 <div className="oneProductCard__info-video">
                                     <iframe
                                         className="oneProductCard__info-video-iframe"
-                                        src="https://www.youtube.com/embed/NjoKy91bWkM"
+                                        src={item.videoUrl}
                                         title={item.name}
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

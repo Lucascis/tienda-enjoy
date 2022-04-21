@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 
-const ItemCounts = ({ stock = 0, initial = 1}) => {
+const ItemCount = ({ stock = 0, initial = 1, onAdd}) => {
 
     const [count, setCount] = useState(0);
 
     useEffect(() => {
         setCount(initial);
-    },[]);
+    },[initial]);
 
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);
-            console.log(count, stock)
         }
     }
     
@@ -19,10 +18,6 @@ const ItemCounts = ({ stock = 0, initial = 1}) => {
         if (count > initial) {
             setCount(count - 1);
         }
-    }
-
-    const onAdd = (qty) => {
-        console.log(`Seleccionó ${qty} items.`)
     }
 
     return (
@@ -41,7 +36,7 @@ const ItemCounts = ({ stock = 0, initial = 1}) => {
                 </svg>
             </button>
             {
-                stock
+                (stock && count !== 0)
                 ?<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm">Agregar al carrito</button>
                 :<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm" disabled>Agregar al carrito</button>
             }
@@ -49,4 +44,4 @@ const ItemCounts = ({ stock = 0, initial = 1}) => {
     );
 }
 
-export default ItemCounts;
+export default ItemCount;

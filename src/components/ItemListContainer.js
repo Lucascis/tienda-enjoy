@@ -11,8 +11,6 @@ const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
     const { idCategory } = useParams();
 
-    console.log(useParams());
-
     useEffect(() => {
         customFetch(2000, products.filter(item => {
             if (idCategory === undefined) return item;
@@ -20,7 +18,7 @@ const ItemListContainer = () => {
         }))
             .then(result => setDatos(result))
             .catch(err => console.log(err))
-    }, [datos]);
+    }, [datos, idCategory]);
 
     return (
         <>

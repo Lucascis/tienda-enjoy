@@ -5,6 +5,7 @@ const products = [
         name: "Teclado Hyperx Alloy FPS PRO",
         price: 11000,
         img: 'hyperx_alloy_fps_pro.webp',
+        videoUrl:"https://www.youtube.com/embed/NjoKy91bWkM",
         stock: 6,
         description: "HyperX ™ Alloy FPS y Alloy FPS Pro son teclados diseñados para\
         brindar durabilidad, confiabilidad y precisión.Con su diseño\
@@ -26,6 +27,7 @@ const products = [
         name: "Auricualares Hyperx Cloud Alpha",
         price: 18000,
         img: 'hyperx_cloud_alpha.webp',
+        videoUrl:"https://www.youtube.com/embed/Tk1HNPtIgUg",
         stock: 4,
         description:"El innovador diseño del Cloud Alpha de HyperX™ con tecnología de\
         altavoces con cámara doble te brindará un sonido con mayor nivel\
@@ -55,6 +57,7 @@ const products = [
         name: "Mouse Logitech G403",
         price: 7000,
         img: 'logitech_g403.webp',
+        videoUrl:"https://www.youtube.com/embed/nMjQHD_vGmE",
         stock: 8,
         description:"Logitech diseña productos y experiencias que ocupan un lugar\
         cotidiano en la vida de las personas, poniendo foco en la\

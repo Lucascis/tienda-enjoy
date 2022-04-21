@@ -7,7 +7,7 @@ const ItemList = ({ items }) => {
             <div className="grid">
                 {
                     items.length > 0
-                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} img={item.img} stock={item.stock} />)
+                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} img={item.img} videoUrl={item.videoUrl} stock={item.stock} />)
                         : <p>Cargando...</p>
                 }
             </div>
