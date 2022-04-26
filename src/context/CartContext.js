@@ -11,21 +11,20 @@ const CartContextProvider = ({ children }) => {
         if (isInCart(item.id)) {
             const newCartList = cartList.map(cartElement => {
                 if (cartElement.id === item.id) {
-                    return{...cartElement, quantity: cartElement.quantity + quantity, total: cartElement.total + (item.price*quantity)}
+                    return{...cartElement, quantity: cartElement.quantity + quantity, subtotal: cartElement.subtotal + (item.price*quantity)}
                 } else return cartElement;
             })
             setCartList([...newCartList]);
         } else {
             setCartList([
-                ...cartList, {...item, quantity, total: item.price * quantity}
+                ...cartList, {...item, quantity, subtotal: item.price * quantity}
             ]);
         }
     }
 
-
     const removeItem = (itemId) => {
         setCartList([
-            ...cartList.filter(item => item.id !== itemId)
+            ...cartList.filter(item => item.id !== itemId)  
         ]);
     }
 
@@ -33,9 +32,24 @@ const CartContextProvider = ({ children }) => {
         setCartList([]);
     }
 
+    const calcQty = () => {
+            let totalQty = 0;
+            cartList.map(cartElement =>{
+                totalQty += cartElement.quantity
+            });
+        return totalQty;
+    }
+
+    const calcTotal = () => {
+        let totalPrice = 0;
+        cartList.map(cartElement =>{
+            totalPrice += cartElement.subtotal
+        });
+        return totalPrice
+    }
 
     return (
-        <CartContext.Provider value={{ cartList, addItem, removeItem, clear }}>
+        <CartContext.Provider value={{ cartList, addItem, removeItem, clear, calcQty, calcTotal }}>
             {children}
         </CartContext.Provider>
     );

@@ -47,23 +47,6 @@
     h3 {
       color: rgb(255, 0, 0);
     }
-    .oneProductCard__info-buyButton {
-      background: var(--bg-nav-color);
-      padding: 10px;
-      width: 120px;
-      border: 0;
-      border-radius: 10px;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-      color: white;
-      cursor: pointer;
-      &:hover {
-        background: rgb(167, 0, 0);
-        transform: scale(1.05);
-        transition: all 0.3s ease-in-out;
-      }
-    }
     .oneProductCard__info-video {
       .oneProductCard__info-video-iframe {
         width: 90%;

@@ -19,7 +19,7 @@ const App = () => {
         <div id="page-container">
           <div id="content-wrap">
             <Header />
-            <main className="contenedor sombra">
+            <main className="contenedor sombra position-relative">
               <Routes>
                 <Route path='/' element={<ItemListContainer />} />
                 <Route path='/categoria/:idCategory' element={<ItemListContainer />} />
