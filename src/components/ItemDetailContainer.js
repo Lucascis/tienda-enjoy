@@ -12,16 +12,18 @@ const ItemDetailContainer = () => {
         const fetchItemFirestore = async () => {
             const docRef = doc(db, "products", idItem);
             const docSnap = await getDoc(docRef);
-            return docSnap.data();
+            const docFirestore = {
+                id: docSnap.id,
+                ...docSnap.data()
+            }
+            return docFirestore;
         };
         fetchItemFirestore()
             .then(result => setDato(result))
             .catch(err => console.log(err))
-
-
     }, [idItem]);
     return (
-        <ItemDetail item={dato} />
+        <ItemDetail item={ dato } />
     );
 }
 

@@ -8,6 +8,7 @@ const CartContextProvider = ({ children }) => {
 
     const addItem = (item, quantity) => {
         if (isInCart(item.id)) {
+            console.log(item)
             const newCartList = cartList.map(cartElement => {
                 if (cartElement.id === item.id) {
                     return { ...cartElement, quantity: cartElement.quantity + quantity, subtotal: cartElement.subtotal + (item.price * quantity) }
@@ -35,16 +36,18 @@ const CartContextProvider = ({ children }) => {
         let totalQty = 0;
         cartList.map(cartElement => {
             totalQty += cartElement.quantity
+            return totalQty;
         });
-        return totalQty;
+        
     }
 
     const calcTotal = () => {
         let totalPrice = 0;
         cartList.map(cartElement => {
             totalPrice += cartElement.subtotal
+            return totalPrice;
         });
-        return totalPrice
+        
     }
     return (
         <CartContext.Provider value={{ cartList, addItem, removeItem, clear, calcQty, calcTotal }}>
