@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import ItemCount from './ItemCount';
 import Checkout from '../utils/Checkout';
+import SpinLoader from '../utils/SpinLoader'
 import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({ item }) => {
@@ -11,17 +12,16 @@ const ItemDetail = ({ item }) => {
         setItemCount(qty);
         itemCart.addItem(item, qty);
     }
-
     return (
         <>
             {
-                item && item.img
+                item && item.imgURL
                     ?
                     <div>
                         <div className="oneProductCard">
                             <img
                                 className="oneProductCard__imagen"
-                                src={require(`../assets/productos/${item.img}`)}
+                                src={item.imgURL}
                                 alt={item.name}
                             />
                             <div className="oneProductCard__info">
@@ -29,18 +29,18 @@ const ItemDetail = ({ item }) => {
                                 <h3>${item.price}</h3>
                                 {
                                     itemCount === 0
-                                    ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
-                                    : <Checkout/>
+                                        ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                                        : <Checkout />
                                 }
-                                
-                                
+
+
                                 <span>
                                     Stock: {item.stock}
                                 </span>
                                 <div className="oneProductCard__info-video">
                                     <iframe
                                         className="oneProductCard__info-video-iframe"
-                                        src={item.videoUrl}
+                                        src={item.videoURL}
                                         title={item.name}
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -56,7 +56,9 @@ const ItemDetail = ({ item }) => {
                             </p>
                         </div>
                     </div>
-                    : <p>Cargando...</p>
+                    :
+                    <SpinLoader/>
+
             }
         </>
     );

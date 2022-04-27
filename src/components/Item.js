@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-const Item = ({ id, name, price, img }) => {
+const Item = ({ id, name, price, imgURL }) => {
     return (
         <div className="productCard">
             <Link to={`/item/${id}`} className="productCard__enlace">
                 <img
                     className="productCard__enlace-imagen"
-                    src={require(`../assets/productos/${img}`)}
+                    src={imgURL}
                     alt={name}
                 />
                 <div className="productCard__info">

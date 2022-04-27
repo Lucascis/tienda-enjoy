@@ -7,17 +7,20 @@ const Cart = () => {
     return (
         <div >
             <h2>Carrito</h2>
+            <Link to="/">
+                <button type="button" className="btn btn-danger btn-sm position-absolute top-0 start-0 mx-4">Volver a Inicio</button>
+            </Link>
             {
                 itemCart.cartList.length > 0
                     ? (
                         <div>
-                            <button type="button" onClick={() => itemCart.clear()} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-5">Eliminar todo</button>
+                            <button type="button" onClick={() => itemCart.clear()} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-4">Eliminar todo</button>
                             {
                                 itemCart.cartList.map(item =>
                                     <div className="oneProductCart" key={item.id}>
                                         <div className='oneProductCartImgContainer'>
                                             <img
-                                                src={require(`../assets/productos/${item.img}`)}
+                                                src={item.imgURL}
                                                 alt={item.name}
                                             />
                                         </div>
@@ -35,15 +38,12 @@ const Cart = () => {
                             }
                             <div className="position-absolute bottom-0 end-0 mx-5">
                                 <span>TOTAL(iva incl.): ${itemCart.calcTotal()}</span>
-                                <button type="button" onClick={''} className="btn btn-primary btn-sm disabled">Terminar mi compra</button>
+                                <button type="button" className="btn btn-primary btn-sm">Terminar mi compra</button>
                             </div>
                         </div>
                     )
                     : (
                         <div>
-                            <Link to="/">
-                                <button type="button" onClick={''} className="btn btn-danger btn-sm mt-2">Volver a Inicio</button>
-                            </Link>
                             <span className='position-absolute top-50 start-50 translate-middle mt-4'>Carrito Vacio</span>
                         </div>
                     )

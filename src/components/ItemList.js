@@ -1,4 +1,5 @@
 import Item from "./Item";
+import SpinLoader from "../utils/SpinLoader";
 
 const ItemList = ({ items }) => {
     return (
@@ -7,8 +8,8 @@ const ItemList = ({ items }) => {
             <div className="grid">
                 {
                     items.length > 0
-                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} img={item.img} videoUrl={item.videoUrl} stock={item.stock} />)
-                        : <p>Cargando...</p>
+                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} imgURL={item.imgURL} />)
+                        : <SpinLoader/>
                 }
             </div>
         </>

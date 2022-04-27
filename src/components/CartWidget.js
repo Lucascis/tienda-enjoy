@@ -16,13 +16,13 @@ const CartWidget = () => {
                     </svg>
                     {
                         cartQty > 0
-                        ? (
-                            <span className="position-absolute top-0 ms-1 translate-middle badge rounded-pill bg-danger border border-white">
-                                {cartQty}
-                            </span>
-                        ) : ''
+                            ? (
+                                <span className="position-absolute top-0 ms-1 translate-middle badge rounded-pill bg-danger border border-white">
+                                    {cartQty}
+                                </span>
+                            ) : ''
                     }
-                    
+
 
                 </button>
             </Link>
