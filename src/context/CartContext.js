@@ -34,20 +34,18 @@ const CartContextProvider = ({ children }) => {
 
     const calcQty = () => {
         let totalQty = 0;
-        cartList.map(cartElement => {
+        cartList.map(cartElement => (
             totalQty += cartElement.quantity
-            return totalQty;
-        });
-        
+        ));
+        return totalQty;
     }
 
     const calcTotal = () => {
         let totalPrice = 0;
-        cartList.map(cartElement => {
+        cartList.map(cartElement => (
             totalPrice += cartElement.subtotal
-            return totalPrice;
-        });
-        
+        ));
+        return totalPrice;
     }
     return (
         <CartContext.Provider value={{ cartList, addItem, removeItem, clear, calcQty, calcTotal }}>
