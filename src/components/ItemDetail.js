@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import ItemCount from './ItemCount';
 import Checkout from '../utils/Checkout';
 import SpinLoader from '../utils/SpinLoader'
+import ReturnButton from '../utils/ReturnButton';
 import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({ item }) => {
@@ -18,6 +19,7 @@ const ItemDetail = ({ item }) => {
                 item && item.imgURL
                     ?
                     <div>
+                        <ReturnButton/>
                         <div className="oneProductCard">
                             <img
                                 className="oneProductCard__imagen"
@@ -32,8 +34,6 @@ const ItemDetail = ({ item }) => {
                                         ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                                         : <Checkout />
                                 }
-
-
                                 <span>
                                     Stock: {item.stock}
                                 </span>
@@ -58,7 +58,6 @@ const ItemDetail = ({ item }) => {
                     </div>
                     :
                     <SpinLoader/>
-
             }
         </>
     );

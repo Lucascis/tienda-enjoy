@@ -22,8 +22,6 @@ const CartWidget = () => {
                                 </span>
                             ) : ''
                     }
-
-
                 </button>
             </Link>
         </div>

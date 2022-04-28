@@ -6,7 +6,6 @@ import ItemList from "./ItemList";
 import { collection, getDocs, query, where} from "firebase/firestore";
 import db from '../utils/firebaseConfig';
 
-
 const ItemListContainer = () => {
 
     const [datos, setDatos] = useState([]);
@@ -14,7 +13,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
         const fetchFirestore = async () => {
-            let queryFilter
+            let queryFilter;
             if (idCategory === undefined) {
                 queryFilter = collection(db, "products")
                 

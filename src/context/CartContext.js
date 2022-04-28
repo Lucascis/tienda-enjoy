@@ -10,7 +10,10 @@ const CartContextProvider = ({ children }) => {
         if (isInCart(item.id)) {
             const newCartList = cartList.map(cartElement => {
                 if (cartElement.id === item.id) {
-                    return { ...cartElement, quantity: cartElement.quantity + quantity, subtotal: cartElement.subtotal + (item.price * quantity) }
+                    return { ...cartElement,
+                        quantity: cartElement.quantity + quantity,
+                        subtotal: cartElement.subtotal + (item.price * quantity)
+                    }
                 } else return cartElement;
             })
             setCartList([...newCartList]);
@@ -27,9 +30,9 @@ const CartContextProvider = ({ children }) => {
         ]);
     }
 
-    const clear = () => {
-        setCartList([]);
-    }
+    const clear = () => (
+        setCartList([])
+    )
 
     const calcQty = () => {
         let totalQty = 0;

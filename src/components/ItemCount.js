@@ -36,7 +36,7 @@ const ItemCount = ({ stock = 0, initial = 1, onAdd}) => {
                 </svg>
             </button>
             {
-                (stock && count !== 0)
+                (stock > 0 && count > 0)
                 ?<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm">Agregar al carrito</button>
                 :<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm" disabled>Agregar al carrito</button>
             }
