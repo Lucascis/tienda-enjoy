@@ -8,7 +8,6 @@ const CartContextProvider = ({ children }) => {
 
     const addItem = (item, quantity) => {
         if (isInCart(item.id)) {
-            console.log(item)
             const newCartList = cartList.map(cartElement => {
                 if (cartElement.id === item.id) {
                     return { ...cartElement, quantity: cartElement.quantity + quantity, subtotal: cartElement.subtotal + (item.price * quantity) }

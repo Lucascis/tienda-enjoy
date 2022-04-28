@@ -38,7 +38,6 @@ const Cart = () => {
                             }
                             <div className="position-absolute bottom-0 end-0 mx-5">
                                 <span>TOTAL(iva incl.): ${itemCart.calcTotal()}  </span>
-                                {console.log(itemCart)}
                                 <button type="button" className="btn btn-primary btn-sm">Terminar mi compra</button>
                             </div>
                         </div>
