@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import ReturnButton from '../utils/ReturnButton';
-import { increment, serverTimestamp, updateDoc, doc, collection, setDoc, getDoc } from 'firebase/firestore';
+import { increment, serverTimestamp, updateDoc, doc, collection, setDoc, } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
 import Swal from 'sweetalert2';
