@@ -1,19 +1,18 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-const ItemCount = ({ stock = 0, initial = 1, onAdd}) => {
+const ItemCount = ({ stock = 0, initial = 1, onAdd }) => {
 
     const [count, setCount] = useState(0);
-
     useEffect(() => {
         setCount(initial);
-    },[initial]);
+    }, [initial]);
 
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);
         }
     }
-    
+
     const decrement = () => {
         if (count > initial) {
             setCount(count - 1);
@@ -37,8 +36,8 @@ const ItemCount = ({ stock = 0, initial = 1, onAdd}) => {
             </button>
             {
                 (stock > 0 && count > 0)
-                ?<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm">Agregar al carrito</button>
-                :<button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm" disabled>Agregar al carrito</button>
+                    ? <button type="button" onClick={() => onAdd(count)} className="btn btn-primary btn-sm">Agregar al carrito</button>
+                    : <button type="button" className="btn btn-primary btn-sm" disabled>Agregar al carrito</button>
             }
         </div >
     );

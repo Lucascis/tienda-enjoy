@@ -12,6 +12,7 @@ const ItemDetail = ({ item }) => {
     const onAdd = (qty) => {
         setItemCount(qty);
         itemCart.addItem(item, qty);
+        itemCart.updateStock(item.id, qty);
     }
     return (
         <>

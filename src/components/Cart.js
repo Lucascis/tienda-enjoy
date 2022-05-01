@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import ReturnButton from '../utils/ReturnButton';
-import { increment, serverTimestamp, updateDoc, doc, collection, setDoc, } from 'firebase/firestore';
+import { serverTimestamp, doc, collection, setDoc, } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import withReactContent from 'sweetalert2-react-content';
 
 const Cart = () => {
     const itemCart = useContext(CartContext);
-
+    let cartList = itemCart.cartList;
     // SweetAlert para pop-out al finalizar compra.
     const MySwal = withReactContent(Swal);
 
@@ -28,14 +28,6 @@ const Cart = () => {
             text: 'Algo salio mal!',
         })
     };
-    const updateStock = () => {
-        itemCart.cartList.forEach(async (item) => {
-            const itemRef = doc(db, "products", item.id);
-            await updateDoc(itemRef, {
-                stock: increment(-item.quantity)
-            });
-        });
-    }
 
     const checkout = () => {
         const itemsForDB = itemCart.cartList.map(item => ({
@@ -64,7 +56,7 @@ const Cart = () => {
         createOrderFirestore()
             .then(result => success(MySwal, result.id, order.buyer.name))
             //Se actualiza stock luego de realizar la compra, no siempre. 
-            .then(updateStock)
+            //.then(updateStock)
             .then(itemCart.clear())
             .catch(err => failed(MySwal))
     }
@@ -77,9 +69,9 @@ const Cart = () => {
                 itemCart.cartList.length > 0
                     ? (
                         <div>
-                            <button type="button" onClick={() => itemCart.clear()} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-4 mt-3">Eliminar todo</button>
+                            <button type="button" onClick={() => {itemCart.resetAllStock(); itemCart.clear();}} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-4 mt-3">Eliminar todo</button>
                             {
-                                itemCart.cartList.map(item =>
+                                cartList.map(item =>
                                     <div className="oneProductCart" key={item.id}>
                                         <div className='oneProductCartImgContainer'>
                                             <img
@@ -94,7 +86,7 @@ const Cart = () => {
                                         <div className="itemTotal">
                                             <span>Cantidad: {item.quantity}</span>
                                             <span>Subtotal: ${item.subtotal}</span>
-                                            <button type="button" onClick={() => itemCart.removeItem(item.id)} className="btn btn-danger btn-sm">Eliminar producto</button>
+                                            <button type="button" onClick={() => {itemCart.resetItemStock(item.id, item.quantity);itemCart.removeItem(item.id, item.quantity);}} className="btn btn-danger btn-sm">Eliminar producto</button>
                                         </div>
                                     </div>
                                 )

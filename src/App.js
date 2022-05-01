@@ -12,7 +12,6 @@ import Cart from './components/Cart';
 import Nosotros from './components/Nosotros'
 import CartContextProvider from './context/CartContext';
 
-
 const App = () => {
   return (
     <CartContextProvider>

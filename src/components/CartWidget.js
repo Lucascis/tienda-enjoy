@@ -4,9 +4,8 @@ import { CartContext } from '../context/CartContext';
 
 const CartWidget = () => {
 
-    const totalQty = useContext(CartContext);
-    let cartQty = totalQty.calcQty();
-
+    const itemCart = useContext(CartContext);
+    let cartQty = itemCart.calcQty();
     return (
         <div className="position-absolute end-0 me-2 mx-1">
             <Link to="Cart">
