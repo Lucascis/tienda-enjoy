@@ -2,17 +2,24 @@ import { createContext, useState } from 'react';
 import { increment, updateDoc, doc } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
+import { setData, getData } from '../utils/localStorage';
+
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-    const [cartList, setCartList] = useState([]);
+    // Intenta traer data de localStorage,
+    let recoveredCart = getData();
+    if (!recoveredCart) recoveredCart = [];
+    const [cartList, setCartList] = useState(recoveredCart);
+    
+    // Settea localStorage 
+    setData(cartList);
 
     const updateStock = async (itemID, itemQty) => {
         const itemRef = doc(db, "products", itemID);
         await updateDoc(itemRef, {
             stock: increment(-itemQty)
         });
-        console.log('Stock updated', itemQty);
     };
 
     const resetItemStock = async (itemId, itemQty) => {
@@ -20,7 +27,6 @@ const CartContextProvider = ({ children }) => {
         await updateDoc(itemRef, {
             stock: increment(itemQty)
         });
-        console.log('Stock resetItemStock')
     };
 
     const resetAllStock = () => {
@@ -29,7 +35,6 @@ const CartContextProvider = ({ children }) => {
             await updateDoc(itemRef, {
                 stock: increment(itemId.quantity)
             });
-            console.log('Stock resetAllStock');
         });
     }
 

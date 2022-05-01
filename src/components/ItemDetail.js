@@ -35,9 +35,7 @@ const ItemDetail = ({ item }) => {
                                         ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                                         : <Checkout />
                                 }
-                                <span>
-                                    Stock: {item.stock}
-                                </span>
+                                
                                 <div className="oneProductCard__info-video">
                                     <iframe
                                         className="oneProductCard__info-video-iframe"

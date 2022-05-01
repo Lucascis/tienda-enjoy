@@ -4,31 +4,11 @@ import ReturnButton from '../utils/ReturnButton';
 import { serverTimestamp, doc, collection, setDoc, } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import {success, failed } from '../utils/popups'
 
 const Cart = () => {
     const itemCart = useContext(CartContext);
     let cartList = itemCart.cartList;
-    // SweetAlert para pop-out al finalizar compra.
-    const MySwal = withReactContent(Swal);
-
-    const success = (MySwal, orderID, buyerName) => {
-        MySwal.fire({
-            title: "Orden Exitosa!",
-            text: `${buyerName}, tu orden es ${orderID}`,
-            icon: "success"
-        });
-    };
-
-    const failed = (MySwal) => {
-        MySwal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Algo salio mal!',
-        })
-    };
-
     const checkout = () => {
         const itemsForDB = itemCart.cartList.map(item => ({
             id: item.id,
@@ -38,9 +18,9 @@ const Cart = () => {
 
         let order = {
             buyer: {
-                name: "Lucas",
-                email: "test@test.com",
-                phone: "5412345678"
+                name: 'Lucas',
+                email: 'email@example.com',
+                phone: '+424-424-424'
             },
             date: serverTimestamp(),
             items: itemsForDB,
@@ -54,11 +34,12 @@ const Cart = () => {
         }
 
         createOrderFirestore()
-            .then(result => success(MySwal, result.id, order.buyer.name))
+            .then(result => success(result.id, order.buyer.name))
             //Se actualiza stock luego de realizar la compra, no siempre. 
             //.then(updateStock)
             .then(itemCart.clear())
-            .catch(err => failed(MySwal))
+            .then(localStorage.clear())
+            .catch(err => {failed(); itemCart.resetAllStock()})
     }
 
     return (
@@ -69,7 +50,7 @@ const Cart = () => {
                 itemCart.cartList.length > 0
                     ? (
                         <div>
-                            <button type="button" onClick={() => {itemCart.resetAllStock(); itemCart.clear();}} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-4 mt-3">Eliminar todo</button>
+                            <button type="button" onClick={() => { itemCart.resetAllStock(); itemCart.clear(); }} className="btn btn-danger btn-sm position-absolute top-0 end-0 mx-4 mt-3">Eliminar todo</button>
                             {
                                 cartList.map(item =>
                                     <div className="oneProductCart" key={item.id}>
@@ -86,7 +67,7 @@ const Cart = () => {
                                         <div className="itemTotal">
                                             <span>Cantidad: {item.quantity}</span>
                                             <span>Subtotal: ${item.subtotal}</span>
-                                            <button type="button" onClick={() => {itemCart.resetItemStock(item.id, item.quantity);itemCart.removeItem(item.id, item.quantity);}} className="btn btn-danger btn-sm">Eliminar producto</button>
+                                            <button type="button" onClick={() => { itemCart.resetItemStock(item.id, item.quantity); itemCart.removeItem(item.id, item.quantity); }} className="btn btn-danger btn-sm">Eliminar producto</button>
                                         </div>
                                     </div>
                                 )
