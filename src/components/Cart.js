@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import ReturnButton from '../utils/ReturnButton';
