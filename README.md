@@ -2,6 +2,8 @@
 
 Tienda Enjoy is an online shop for gamers created with ReacJs for Coderhouse ReactJs course.
 
+##Project deploy on Vercel
+[Tienda Enjoy (Vercel)] (https://tienda-enjoy.vercel.app/)
 
 ## Run Locally
 
@@ -26,5 +28,5 @@ Install required dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm start
 ```
