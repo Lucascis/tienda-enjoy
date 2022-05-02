@@ -4,7 +4,7 @@ import ReturnButton from '../utils/ReturnButton';
 import { serverTimestamp, doc, collection, setDoc, } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
-import {success, failed } from '../utils/popups'
+import { success, failed, getDataClient } from '../utils/popups'
 
 const Cart = () => {
     const itemCart = useContext(CartContext);
@@ -18,9 +18,9 @@ const Cart = () => {
 
         let order = {
             buyer: {
-                name: 'Lucas',
-                email: 'email@example.com',
-                phone: '+424-424-424'
+                name: '',
+                email: '',
+                phone: ''
             },
             date: serverTimestamp(),
             items: itemsForDB,
@@ -32,18 +32,25 @@ const Cart = () => {
             await setDoc(newOrderRef, order);
             return newOrderRef;
         }
-
-        createOrderFirestore()
-            .then(result => success(result.id, order.buyer.name))
-            //Se actualiza stock luego de realizar la compra, no siempre. 
-            //.then(updateStock)
-            .then(itemCart.clear())
-            .then(localStorage.clear())
-            .catch(err => {failed(); itemCart.resetAllStock()})
+        //Funcion async para ejecutar los popups getDataClient luego crea orden.
+        const purchaseComplete = async () => {
+            await getDataClient()
+                .then(response => (
+                    order.buyer.name = response.clientName,
+                    order.buyer.email = response.clientPhone,
+                    order.buyer.phone = response.clientEmail
+                ))
+            await createOrderFirestore()
+                .then(result => success(result.id, order.buyer.name))
+                .then(itemCart.clear())
+                .then(localStorage.clear())
+                .catch(err => { failed(); itemCart.resetAllStock() })
+        }
+        purchaseComplete()
     }
 
     return (
-        <div >
+        <div>
             <h2>Carrito</h2>
             <ReturnButton />
             {

@@ -55,7 +55,7 @@ const CartContextProvider = ({ children }) => {
             setCartList([...newCartList]);
         } else {
             setCartList([
-                ...cartList, { ...item, quantity, subtotal: item.price }
+                ...cartList, { ...item, quantity, subtotal: item.price * quantity }
             ]);
         }
     }
