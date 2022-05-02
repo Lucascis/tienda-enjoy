@@ -6,6 +6,10 @@ Tienda Enjoy is an online shop for gamers created with ReacJs for Coderhouse Rea
 
 [Tienda Enjoy](https://tienda-enjoy.vercel.app/)
 
+## Video
+
+[![Youtube Link](https://img.youtube.com/vi/DASP9oOIDxY/0.jpg)](https://www.youtube.com/watch?v=DASP9oOIDxY)
+
 ## Run Locally
 
 Clone the project
