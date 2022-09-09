@@ -20,8 +20,8 @@ const ItemDetail = ({ item }) => {
                 item && item.imgURL
                     ?
                     <div>
+                        <div className="oneProductCard position-relative">
                         <ReturnButton/>
-                        <div className="oneProductCard">
                             <img
                                 className="oneProductCard__imagen"
                                 src={item.imgURL}

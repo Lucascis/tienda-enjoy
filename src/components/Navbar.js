@@ -5,7 +5,7 @@ import CartWidget from './CartWidget';
 const Navbar = () => {
 
     return (
-        <nav className="navbar sticky-top navbar-expand-md position-relative">
+        <nav className="navbar sticky-top navbar-expand-md">
             <div className="container-fluid ">
                 <div className="navbar-light">
                     <button
