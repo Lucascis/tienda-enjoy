@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/joystick_logo.webp';
-import Navbar from './Navbar';
+import NavbarMenu from './Navbar';
 
 const Header = () => {
 
@@ -16,7 +16,7 @@ const Header = () => {
                     />
                 </Link>
             </div>
-            <Navbar />
+            <NavbarMenu />
         </div>
     );
 }

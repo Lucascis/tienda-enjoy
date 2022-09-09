@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import ItemCount from './ItemCount';
 import Checkout from '../utils/Checkout';
 import SpinLoader from '../utils/SpinLoader'
-import ReturnButton from '../utils/ReturnButton';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({ item }) => {
@@ -21,7 +21,9 @@ const ItemDetail = ({ item }) => {
                     ?
                     <div>
                         <div className="oneProductCard position-relative">
-                        <ReturnButton/>
+                            <Link to="/">
+                                <button aria-label="Volver al inicio de la pagina" type="button" className="btn btn-danger btn-sm position-absolute top-0 mt-3">Volver a Inicio</button>
+                            </Link>
                             <img
                                 className="oneProductCard__imagen"
                                 src={item.imgURL}
@@ -35,7 +37,7 @@ const ItemDetail = ({ item }) => {
                                         ? <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                                         : <Checkout />
                                 }
-                                
+
                                 <div className="oneProductCard__info-video">
                                     <iframe
                                         className="oneProductCard__info-video-iframe"
@@ -56,7 +58,7 @@ const ItemDetail = ({ item }) => {
                         </div>
                     </div>
                     :
-                    <SpinLoader/>
+                    <SpinLoader />
             }
         </>
     );

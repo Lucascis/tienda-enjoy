@@ -10,25 +10,27 @@
       font-size: 1.4rem;
       @include black_hover;
     }
-    li {
-      .dropdown-menu {
-        @extend .navbar;
-        & a:hover {
-          @extend .dropdown-menu;
-        }
+    .dropdown-menu {
+      background-color: var(--bg-nav-color);
+      & a:hover {
+        background-color: #fff;
       }
     }
-    .nav-item {
-      margin: 0 10px 0 10px;
+    .dropdown-item {
+      margin: 0.3rem 0;
     }
   }
-  .navbar-light .navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.7);
-  }
   .navbar-toggler:focus,
-  .navbar-toggler:active,
-  .navbar-toggler-icon:focus {
+  .navbar-toggler:active{
     outline: none;
     box-shadow: none;
   }
+  .navbar-collapse .nav-link {
+    margin: 0 1.5rem;
+  }
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
+
+

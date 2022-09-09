@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import ReturnButton from '../utils/ReturnButton';
+import { Link } from 'react-router-dom';
 import { serverTimestamp, doc, collection, setDoc, } from 'firebase/firestore';
 import db from '../utils/firebaseConfig';
 
@@ -52,8 +52,10 @@ const Cart = () => {
 
     return (
         <div className="position-relative">
-            <ReturnButton/>
-            <h2 className="pt-3">Carrito</h2>
+            <Link to="/">
+                <button aria-label="Ir al inicio de la pagina" type="button" className="btn btn-danger btn-sm position-absolute top-0">Volver a Inicio</button>
+            </Link>
+            <h2>Carrito</h2>
             {
                 itemCart.cartList.length > 0
                     ? (
