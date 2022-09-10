@@ -10,7 +10,7 @@ const NavbarMenu = () => {
         <Navbar className="navbar" expand="md">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Collapse>
                     <Nav className="mx-auto">
                         <Nav.Link aria-label="Ir al inicio de nuestra pagina" href="/">Inicio</Nav.Link>
                         <NavDropdown aria-label="Abrir menu de categorias" title="Categorias" id="basic-navbar-nav" renderMenuOnMount>
