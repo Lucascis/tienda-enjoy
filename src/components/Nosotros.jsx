@@ -15,7 +15,7 @@ const Nosotros = () => {
                     Nuestra visión desde Tienda Enjoy es ser la tienda informática
                     número uno de Argentina. Ofrecer hardware de calidad a un
                     excelente precio y brindar una experiencia centrada en la
-                    satisfacción del cliente. Brindar productos de vanguardia y
+                    satisfacción del cliente, productos de vanguardia y
                     últimos lanzamientos.
                 </p>
             </section>

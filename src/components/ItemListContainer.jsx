@@ -9,16 +9,16 @@ import db from '../utils/firebaseConfig';
 const ItemListContainer = () => {
 
     const [datos, setDatos] = useState([]);
-    const { idCategory } = useParams();
+    const { nameCategory } = useParams();
 
     useEffect(() => {
         const fetchFirestore = async () => {
             let queryFilter;
-            if (idCategory === undefined) {
+            if (nameCategory === undefined) {
                 queryFilter = collection(db, "products")
                 
             } else{
-                queryFilter = query(collection(db, "products"), where("idCategory", "==", parseInt(idCategory)))
+                queryFilter = query(collection(db, "products"), where("nameCategory", "==", nameCategory))
             }
             const querySnapshot = await getDocs(queryFilter);
             const dataFirestore = querySnapshot.docs.map((doc) => ({
@@ -30,7 +30,7 @@ const ItemListContainer = () => {
         fetchFirestore()
             .then(result => setDatos(result))
             .catch(err => console.log(err));
-    }, [idCategory]);
+    }, [nameCategory]);
 
     return (
         <>

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Item = ({ id, name, price, imgURL }) => {
+const Item = ({ id, name, price, imgURL, category}) => {
     return (
         <div className="productCard">
-            <Link to={`/item/${id}`} className="productCard__enlace">
+            <Link to={`/categoria/${category}/${id}`} className="productCard__enlace">
                 <img
                     className="productCard__enlace-imagen"
                     src={imgURL}

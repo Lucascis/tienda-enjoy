@@ -2,53 +2,10 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { serverTimestamp, doc, collection, setDoc, } from 'firebase/firestore';
-import db from '../utils/firebaseConfig';
-
-import { success, failed, getDataClient } from '../utils/popups'
 
 const Cart = () => {
     const itemCart = useContext(CartContext);
     let cartList = itemCart.cartList;
-    const checkout = () => {
-        const itemsForDB = itemCart.cartList.map(item => ({
-            id: item.id,
-            title: item.name,
-            price: item.price
-        }));
-
-        let order = {
-            buyer: {
-                name: '',
-                email: '',
-                phone: ''
-            },
-            date: serverTimestamp(),
-            items: itemsForDB,
-            total: itemCart.calcTotal()
-        };
-
-        const createOrderFirestore = async () => {
-            const newOrderRef = doc(collection(db, "orders"));
-            await setDoc(newOrderRef, order);
-            return newOrderRef;
-        }
-        //Funcion async para ejecutar los popups getDataClient luego crea orden.
-        const purchaseComplete = async () => {
-            await getDataClient()
-                .then(response => (
-                    order.buyer.name = response.clientName,
-                    order.buyer.email = response.clientPhone,
-                    order.buyer.phone = response.clientEmail
-                ))
-            await createOrderFirestore()
-                .then(result => success(result.id, order.buyer.name))
-                .then(itemCart.clear())
-                .then(localStorage.clear())
-                .catch(err => { failed(); itemCart.resetAllStock() })
-        }
-        purchaseComplete()
-    }
 
     return (
         <div className="position-relative">
@@ -57,10 +14,10 @@ const Cart = () => {
             </Link>
             <h2>Carrito</h2>
             {
-                itemCart.cartList.length > 0
+                cartList.length > 0
                     ? (
                         <div>
-                            <button type="button" onClick={() => { itemCart.resetAllStock(); itemCart.clear(); }} className="btn btn-danger btn-sm position-absolute top-0 end-0 mt-3">Eliminar todo</button>
+                            <button type="button" onClick={() => { itemCart.resetAllStock(); itemCart.clear(); }} className="btn btn-danger btn-sm position-absolute top-0 end-0">Eliminar todo</button>
                             {
                                 cartList.map(item =>
                                     <div className="oneProductCart" key={item.id}>
@@ -85,7 +42,9 @@ const Cart = () => {
                             <div className="position-relative my-4">
                                 <div className="position-absolute top-50 end-0 translate-middle-y">
                                     <span>TOTAL(iva incl.): ${itemCart.calcTotal()}  </span>
-                                    <button type="button" onClick={checkout} className="btn btn-primary btn-sm ms-2 mb-2">Terminar mi compra</button>
+                                    <Link to="/payment">
+                                        <button type="button" className="btn btn-primary btn-sm ms-2 mb-2">Terminar mi compra</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +57,6 @@ const Cart = () => {
             }
         </div>
     );
-}
+};
 
 export default Cart;

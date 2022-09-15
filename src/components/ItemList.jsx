@@ -8,7 +8,7 @@ const ItemList = ({ items }) => {
             <div className="grid">
                 {
                     items.length > 0
-                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} imgURL={item.imgURL} />)
+                        ? items.map(item => <Item key={item.id} id={item.id} name={item.name} price={item.price} imgURL={item.imgURL} category={item.nameCategory} />)
                         : <SpinLoader/>
                 }
             </div>
